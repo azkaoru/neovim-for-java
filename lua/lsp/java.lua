@@ -5,7 +5,6 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 local workspace_folder = home .. "/.local/share/nvim-java/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 local remap = require("me.util").remap
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -25,13 +24,23 @@ local on_attach = function(client, bufnr)
   remap("v", "<space>em", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], bufopts, "Extract method")
 end
 
+function get_libs()
+    local jars_lookup_dir = vim.fn.getenv("JDTLS_JARS_LOOKUP_DIR")
+    if jars_lookup_dir == vim.NIL  then
+       return {}
+    else
+       return vim.split(vim.fn.globpath(jars_lookup_dir, '/**/*.jar'), "\n")
+    end
+end
+
 local bundles = {
   vim.fn.glob(home .. '/.local/share/nvim-java/projects/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'),
 }
-vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/nvim-java/projects/vscode-java-test/server/*.jar'), "\n"))
+--vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/nvim-java/projects/vscode-java-test/server/*.jar'), "\n"))
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 
 local config = {
   flags = {
@@ -50,6 +59,9 @@ local config = {
           url = "/.local/share/nvim-java/eclipse/eclipse-java-google-style.xml",
           profile = "GoogleStyle",
         },
+      },
+      project = {
+        referencedLibraries = get_libs() ,
       },
       signatureHelp = { enabled = true },
       contentProvider = { preferred = 'fernflower' },
@@ -116,7 +128,6 @@ local config = {
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
     '-javaagent:' .. home .. '/.local/share/nvim-java/eclipse/lombok.jar',
---    '-jar', im.fn.glob('/home/hanzo/.local/share/nvim-java/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
     '-jar',  home .. '/.local/share/nvim-java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
     '-configuration', home .. '/.local/share/nvim-java/jdtls/config_linux',
     '-data', workspace_folder,
@@ -126,5 +137,10 @@ local config = {
 local M = {}
 function M.make_jdtls_config()
   return config
+end
+
+
+function get_libs()
+   return {}
 end
 return M

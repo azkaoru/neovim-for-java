@@ -2,7 +2,7 @@ function mvn_quarkus_dev()
   --local debug_param = ""
   --if debug then
   --  debug_param = ' -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005" '
-  --end 
+  --end
 
   --local profile_param = ""
   --if profile then
@@ -16,7 +16,7 @@ function mvn_compile()
 end
 
 function mvn_wildfly_deploy()
-  return 'mvn wildfy:deploy'
+  return 'mvn wildfly:deploy'
 end
 
 function mvn_compile_wildfly_deploy()
