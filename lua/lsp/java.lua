@@ -35,7 +35,10 @@ end
 
 local bundles = {
   vim.fn.glob(home .. '/.local/share/nvim-java/projects/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'),
-  vim.fn.glob(home .. '/.local/share/nvim-java/projects/dg-jdt-ls-decompiler/dg.jdt.ls.decompiler*.jar'),
+  home .. '/.local/share/nvim-java/projects/dg-jdt-ls-decompiler/dg.jdt.ls.decompiler.cfr-0.0.3.jar',
+  home .. '/.local/share/nvim-java/projects/dg-jdt-ls-decompiler/dg.jdt.ls.decompiler.common-0.0.3.jar',
+  home .. '/.local/share/nvim-java/projects/dg-jdt-ls-decompiler/dg.jdt.ls.decompiler.fernflower-0.0.3.jar',
+  home .. '/.local/share/nvim-java/projects/dg-jdt-ls-decompiler/dg.jdt.ls.decompiler.procyon-0.0.3.jar',
 }
 --vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/nvim-java/projects/vscode-java-test/server/*.jar'), "\n"))
 
