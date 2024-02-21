@@ -22,6 +22,7 @@ mkdir -p ~/.local/share/nvim-java/jdtls
 mkdir -p ~/.local/share/nvim-java/eclipse
 mkdir -p ~/.local/share/nvim-java/projects/java-debug/com.microsoft.java.debug.plugin/target/
 mkdir -p ~/.local/share/nvim-java/projects/vscode-java-test/server
+mkdir -p ~/.local/share/nvim-java/projects/dg-jdt-ls-decompiler
 
 #
 # install jdtls
@@ -39,6 +40,11 @@ cp jars/java-debug/com.microsoft.java.debug.plugin-0.44.0.jar  ~/.local/share/nv
 cp jars/vscode-java-test/*.jar  ~/.local/share/nvim-java/projects/vscode-java-test/server
 
 #
+# install dg-jdt-ls-decompiler
+#
+cp jars/dg-jdt-ls-decompiler/*.jar  ~/.local/share/nvim-java/projects/dg-jdt-ls-decompiler
+
+#
 # install lombok
 #
 cp jars/lombok.jar  ~/.local/share/nvim-java/eclipse
@@ -52,3 +58,5 @@ cp jars/eclipse-java-google-style.xml ~/.local/share/nvim-java/eclipse
 # install java format
 #
 cp jars/google-java-format-1.16.0.jar ~/.local/share/nvim-java/eclipse
+
+

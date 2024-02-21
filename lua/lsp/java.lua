@@ -35,12 +35,15 @@ end
 
 local bundles = {
   vim.fn.glob(home .. '/.local/share/nvim-java/projects/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'),
+  vim.fn.glob(home .. '/.local/share/nvim-java/projects/dg-jdt-ls-decompiler/dg.jdt.ls.decompiler*.jar'),
 }
 --vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/nvim-java/projects/vscode-java-test/server/*.jar'), "\n"))
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+local extendedClientCapabilities = jdtls.extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local config = {
   flags = {
@@ -59,6 +62,29 @@ local config = {
           url = "/.local/share/nvim-java/eclipse/eclipse-java-google-style.xml",
           profile = "GoogleStyle",
         },
+      },
+      eclipse = {
+          downloadSources = true,
+      },
+      maven = {
+          downloadSources = true,
+      },
+      implementationsCodeLens = {
+          enabled = true,
+      },
+      referencesCodeLens = {
+          enabled = true,
+      },
+      references = {
+          includeDecompiledSources = true,
+      },
+      inlayHints = {
+          parameterNames = {
+              enabled = "all",
+          },
+      },
+      contentProvider = {
+          preferred = 'fernflower'
       },
       project = {
         referencedLibraries = get_libs() ,
@@ -99,6 +125,7 @@ local config = {
         useBlocks = true,
       },
       configuration = {
+        updateBuildConfiguration = 'interactive',
         runtimes = {
           {
             name = "JavaSE-11",
@@ -114,7 +141,9 @@ local config = {
           },
         }
       }
-    }
+    },
+    signatureHelp = { enabled = true },
+    extendedClientCapabilities = extendedClientCapabilities,
   },
   cmd = {
     "/usr/lib/jvm/java-17-openjdk/bin/java",
