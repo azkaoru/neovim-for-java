@@ -2,7 +2,7 @@ local home = os.getenv('HOME')
 local jdtls = require('jdtls')
 local root_markers = {'gradlew', 'mvnw', '.git'}
 local root_dir = require('jdtls.setup').find_root(root_markers)
-local workspace_folder = home .. "/.local/share/nvim-java/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+local workspace_folder = home .. "/.local/share/nvim-java/workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 local remap = require("me.util").remap
 -- Use an on_attach function to only map the following keys

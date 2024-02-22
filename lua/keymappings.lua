@@ -59,6 +59,7 @@ remap("n", "<leader>fc", "<cmd>Telescope lsp_incoming_calls<cr>", bufopts, "Find
 remap("n", "<leader>fo", "<cmd>Telescope lsp_outgoing_calls<cr>", bufopts, "Find outgoing calls (LSP)")
 remap("n", "<leader>fi", "<cmd>Telescope lsp_implementations<cr>", bufopts, "Find implementations (LSP)")
 remap("n", "<leader>fx", "<cmd>Telescope diagnostics bufnr=0<cr>", bufopts, "Find errors (LSP)")
+remap("n", "<leader>ft", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", bufopts, "Find type definications (LSP)")
 require("which-key").register({
   f = {
     name = "find",
@@ -108,7 +109,9 @@ require("which-key").register({
 
 remap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", bufopts, "Continue")
 remap("n", "<leader>dj", "<cmd>lua require'dap'.step_over()<cr>", bufopts, "Step over")
+remap("n", "<F7>", "<cmd>lua require'dap'.step_over()<cr>", bufopts, "Step over")
 remap("n", "<leader>dk", "<cmd>lua require'dap'.step_into()<cr>", bufopts, "Step into")
+remap("n", "<F8>", "<cmd>lua require'dap'.step_into()<cr>", bufopts, "Step into")
 remap("n", "<leader>do", "<cmd>lua require'dap'.step_out()<cr>", bufopts, "Step out")
 remap("n", "<leader>dd", "<cmd>lua require'dap'.disconnect()<cr>", bufopts, "Disconnect")
 remap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", bufopts, "Terminate")

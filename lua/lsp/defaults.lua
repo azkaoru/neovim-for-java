@@ -18,7 +18,7 @@ M.on_attach = function(_, bufnr)
   remap('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts, "List workspace folders")
-  remap('n', '<space>D', vim.lsp.buf.type_definition, bufopts, "Go to type definition")
+  remap('n', '<leader>jt', vim.lsp.buf.type_definition, bufopts, "Jump to type definition")
   remap('n', '<space>rn', vim.lsp.buf.rename, bufopts, "Rename")
   remap('n', '<space>ca', vim.lsp.buf.code_action, bufopts, "Code actions")
   vim.keymap.set('v', "<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",

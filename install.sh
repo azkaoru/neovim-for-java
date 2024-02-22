@@ -20,6 +20,7 @@ export DISPLAY=":1"
 
 mkdir -p ~/.local/share/nvim-java/jdtls
 mkdir -p ~/.local/share/nvim-java/eclipse
+mkdir -p ~/.local/share/nvim-java/workspace
 mkdir -p ~/.local/share/nvim-java/projects/java-debug/com.microsoft.java.debug.plugin/target/
 mkdir -p ~/.local/share/nvim-java/projects/vscode-java-test/server
 mkdir -p ~/.local/share/nvim-java/projects/dg-jdt-ls-decompiler
