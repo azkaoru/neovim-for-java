@@ -1,6 +1,6 @@
 local home = os.getenv('HOME')
 local jdtls = require('jdtls')
-local root_markers = {'gradlew', 'mvnw', '.git'}
+local root_markers = {'gradlew', 'pom.xml','mvnw', '.git'}
 local root_dir = require('jdtls.setup').find_root(root_markers)
 local workspace_folder = home .. "/.local/share/nvim-java/workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
@@ -155,6 +155,10 @@ local config = {
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
     '-Dlog.protocol=true',
     '-Dlog.level=ALL',
+    '-Dhttp.proxyHost=172.19.0.3',
+    '-Dhttp.proxyPort=8080',
+    '-Dhttps.proxyHost=172.19.0.3',
+    '-Dhttps.proxyPort=8080',
     '-Xmx4g',
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',

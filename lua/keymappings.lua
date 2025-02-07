@@ -80,7 +80,7 @@ require("which-key").register({
 remap("n", "<leader>o", "<cmd>SymbolsOutline<cr>", bufopts, "Show symbols")
 
 -- nvim-tree
-remap("n", "<leader>nn", "<cmd>NvimTreeToggle<cr>", bufopts, "Open file browser")
+remap("n", "<leader>tt", "<cmd>NvimTreeToggle<cr>", bufopts, "File Browser Toggle Switch")
 remap("n", "<leader>nf", "<cmd>NvimTreeFindFileToggle<cr>", bufopts, "Find file in browser")
 
 -- vim-test
@@ -107,12 +107,12 @@ require("which-key").register({
   },
 }, { prefix = "<leader>" })
 
-remap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", bufopts, "Continue")
+remap("n", "<F9>", "<cmd>lua require'dap'.continue()<cr>", bufopts, "Continue")
 remap("n", "<leader>dj", "<cmd>lua require'dap'.step_over()<cr>", bufopts, "Step over")
-remap("n", "<F7>", "<cmd>lua require'dap'.step_over()<cr>", bufopts, "Step over")
+remap("n", "<F8>", "<cmd>lua require'dap'.step_over()<cr>", bufopts, "Step over")
 remap("n", "<leader>dk", "<cmd>lua require'dap'.step_into()<cr>", bufopts, "Step into")
-remap("n", "<F8>", "<cmd>lua require'dap'.step_into()<cr>", bufopts, "Step into")
-remap("n", "<leader>do", "<cmd>lua require'dap'.step_out()<cr>", bufopts, "Step out")
+remap("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", bufopts, "Step into")
+remap("n", "<S-F8>", "<cmd>lua require'dap'.step_out()<cr>", bufopts, "Step out")
 remap("n", "<leader>dd", "<cmd>lua require'dap'.disconnect()<cr>", bufopts, "Disconnect")
 remap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", bufopts, "Terminate")
 remap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", bufopts, "Open REPL")

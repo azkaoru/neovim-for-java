@@ -67,8 +67,22 @@ return {
   },
   {
     'mfussenegger/nvim-dap',
-    config = function() require('config/nvim-dap') end,
+    config = function()
+      require('config/nvim-dap')
+    end,
   },
+
+		 {
+			"rcarriga/nvim-dap-ui",
+      dependencies = {
+        'mfussenegger/nvim-dap',
+        'nvim-neotest/nvim-nio',
+      },
+      -- requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+			config = function()
+				require('config.dapui')
+			end,
+		},
   {
     'navarasu/onedark.nvim',
     config = function()
@@ -85,7 +99,8 @@ return {
   },
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    --tag = '0.1.4'
+     branch = '0.1.x',
     dependencies = {
       'nvim-telescope/telescope-dap.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -142,7 +157,7 @@ return {
      config = function()
        vim.opt.termguicolors = true
        require("bufferline").setup()
-     end, 
+     end,
   },
   {
     "sainnhe/everforest",
@@ -155,5 +170,26 @@ return {
      config = function()
          vim.cmd[[colorscheme dracula]]
      end,
-   },
+  },
+  {
+      "thinca/vim-quickrun",
+      dependencies = { 'lambdalisue/vim-quickrun-neovim-job' },
+			config = function()
+				vim.g.quickrun_config = {
+					["_"] = {
+						["runner"] = "neovim_job",
+						["outputter/buffer/opener"] = "new",
+						["outputter/buffer/close_on_empty"] = 1,
+					},
+				}
+				vim.keymap.set("n", "<leader>r", "<Nop>")
+				vim.keymap.set("n", "<leader>rr", ":QuickRun<CR>", { silent = true })
+			end,
+  },
+  {
+     "akinsho/toggleterm.nvim",
+     config = function()
+       require("toggleterm").setup()
+     end,
+  },
 }

@@ -11,6 +11,21 @@ function mvn_quarkus_dev()
   return 'mvn compile quarkus:dev'
 end
 
+
+function run_wildfly_deploy_using_current_buffer_file()
+  local dir = vim.fn.expand("%:h") -- Get the current file name
+  print(dir)
+  --local pom = vim.fn.expand("%:p") -- Get the fullpath
+  vim.cmd('term ' .. "mvn wildfly:deploy -f"  .. dir .. '/' .. 'pom.xml')
+end
+
+function run_wildfly_undeploy_using_current_buffer_file()
+  local dir = vim.fn.expand("%:h") -- Get the current file name
+  print(dir)
+  --local pom = vim.fn.expand("%:p") -- Get the fullpath
+  vim.cmd('term ' .. "mvn wildfly:undeploy -f"  .. dir .. '/' .. 'pom.xml')
+end
+
 function mvn_compile()
   return 'mvn clean package'
 end
@@ -36,6 +51,10 @@ end
 
 function run_compile_wildfly_deploy()
   vim.cmd('term ' .. mvn_compile_wildfly_deploy())
+end
+
+function run_mv_depend_tree()
+  vim.cmd('term ' .. 'mvn dependency:tree')
 end
 
 function attach_to_quarkus_debug()
@@ -64,9 +83,12 @@ function attach_to_jboss_debug()
   dap.continue()
 end
 
-vim.keymap.set("n", "<F9>", function() run_compile() end)
-vim.keymap.set("n", "<F10>", function() run_wildfly_deploy() end)
-vim.keymap.set("n", "<F11>", function() run_compile_wildfly_deploy() end)
+vim.keymap.set("n", "<F11>", function() run_compile() end)
+vim.keymap.set("n", "<F12>", function() run_wildfly_deploy() end)
+vim.keymap.set("n", "<leader>rmd", function() run_wildfly_deploy_using_current_buffer_file() end)
+vim.keymap.set("n", "<leader>rmu", function() run_wildfly_undeploy_using_current_buffer_file() end)
+vim.keymap.set("n", "<leader>rmt", function() run_mv_depend_tree() end)
 
+-- attach
 vim.keymap.set("n", "<leader>daq", ':lua attach_to_quarkus_debug()<CR>')
-vim.keymap.set("n", "<leader>dab", ':lua attach_to_jboss_debug()<CR>')
+vim.keymap.set("n", "<leader>daj", ':lua attach_to_jboss_debug()<CR>')

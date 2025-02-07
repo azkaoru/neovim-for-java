@@ -13,7 +13,7 @@ stow --restow --target=$NVIM_DEV/nvim .
 
 alias nj='XDG_DATA_HOME=$NVIM_DEV/share XDG_CONFIG_HOME=$NVIM_DEV nvim'
 
-export nj 
+export nj
 
 # コピー&ペーストにosのclipboardを利用するためにDISPLAYを設定
 export DISPLAY=":1"
@@ -24,7 +24,8 @@ mkdir -p ~/.local/share/nvim-java/workspace
 mkdir -p ~/.local/share/nvim-java/projects/java-debug/com.microsoft.java.debug.plugin/target/
 mkdir -p ~/.local/share/nvim-java/projects/vscode-java-test/server
 mkdir -p ~/.local/share/nvim-java/projects/dg-jdt-ls-decompiler
-
+mkdir -p ~/.local/share/utils/cli-decompiler/src
+mkdir -p ~/.local/share/utils/cli-decompiler/dest
 #
 # install jdtls
 #
@@ -61,3 +62,7 @@ cp jars/eclipse-java-google-style.xml ~/.local/share/nvim-java/eclipse
 cp jars/google-java-format-1.16.0.jar ~/.local/share/nvim-java/eclipse
 
 
+#
+# install  cli decompiler
+#
+cp jars/vineflower-1.10.1.jar ~/.local/share/utils/cli-decompiler
